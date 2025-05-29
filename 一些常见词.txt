@@ -1,0 +1,13 @@
+divisible 可除的
+without leading zeros 不含前导零
+initially 最初的
+greedy 贪心的
+It is guaranteed that 题目保证······
+grid 网格
+appears an equal number of times 出现次数相同
+No two cells that share an edge have the same integer 相邻的两个单元格没有相同的数字
+denote 代表，表示
+arbitrary 任意的
+unlimited number of actions 不受数量限制的行动
+in any order 以任意顺序
+as soon as 一什么什么就

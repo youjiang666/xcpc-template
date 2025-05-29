@@ -1,0 +1,14 @@
+int ri()
+{
+	int x=0;
+	char c=getchar(),f=1;
+	while(c<'0'||c>'9'){
+		if(c=='-')
+			f=-f;
+		c=getchar();
+	}
+	while(c<='9'&&c>='0')
+		x=(x<<1)+(x<<3)+(c^48),c=getchar();
+	return x*f;
+}
+//一次读入一个，直接调用，如int  a = ri();

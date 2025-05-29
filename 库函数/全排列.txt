@@ -1,0 +1,6 @@
+1.
+next_permutation(v.begin(),v.end());
+生成下一个排列，存在下一个排列返回true，否则返回false
+prev_permutation(v.begin(),v.end());
+生成上一个排列，存在上一个排列返回true，否则返回false
+通常放在while里搭配使用

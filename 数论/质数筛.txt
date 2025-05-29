@@ -1,0 +1,42 @@
+1.埃氏筛
+版本一(适用于需要输出具体质数)O(nlog(logn))
+for(int i = 2;i <= n / i;++ i)
+{
+  if(!vis[i])
+  {
+    for(int j = i * i;j <= n;j += i)
+    {
+      vis[j] = 1;//打标记为合数
+    }
+  }
+}//vis中未标记的为质数
+版本二(适用于只需要计数，时间复杂度很优秀)
+int cnt = n + 1 >> 1;
+for(int i = 3;i <= n / i;i += 2)
+{
+  if(!vis[i])
+  {
+    for(int j = i * i;j <= n;j += 2 * i)
+    {
+      if(!vis[j])
+      {
+        vis[j] = 1;
+        -- cnt;
+      }
+    }
+  }
+}//cnt便为质数个数也可以叫它奇数筛
+2.欧拉筛O(n)
+int cnt = 0;
+  for(int i = 2;i <= n;++ i)
+  {
+    if(!vis[i])prime[++ cnt] = i;
+    for(int j = 1;j <= cnt;++ j)
+    {
+      if(prime[j] * i > n)break;
+      vis[prime[j] * i] = 1;
+      if(!(i % prime[j]))break;
+    } 
+  }//cnt为质数个数，preime存放了质数
+ 
+

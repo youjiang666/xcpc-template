@@ -1,0 +1,46 @@
+1.
+加法原理，乘法原理
+2.组合数求法
+一.DP法(适用于p不是质数的情况，且n * m )
+由C(n,m) = C(n - 1,m - 1) + C(n - 1,m);
+//加法原理，分类选择第一个和不选择第一个
+方程满足DP条件//其实也是杨辉三角
+二维dp：
+vector<vector ll >dp;
+dp.resize(n + 1);
+for(int i = 0;i <= n;++ i)
+{
+  int en = min(i,m);
+  dp[i].resize(en + 1);
+  dp[i][0] = 1;
+  for(int j = 1;j <= en;++ j)
+    dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]) % p;
+}
+//dp[n][m]即为所求
+一维dp优化：
+vector<ll> dp = {1};
+for(int i = 0;i <= n;++ i)
+{
+  int en = min(m,i);
+  dp.resize(en + 2);
+  for(int j = en;j >= 1;-- j)
+    dp[j] = (dp[j - 1] + dp[j]) % p;
+}
+//dp[m]即为所求，复杂度很优秀
+二.预处理阶乘数组以及阶乘逆元数组(适用于模数为质数时(此时才存在逆元))
+for(int i = 1;i <= max;++ i)fact[i] = fact[i - 1] * i % p;
+invfact[max] = inv(fact[i]);
+for(int i = max - 1;i >= 0;-- i)invfact[i] = invfact[i + 1] * (i + 1) % p;
+//预处理的话复杂度会比较稳定注意0也是有逆元的对应n==m的条件
+组合数函数
+1.ll C(int a,int b){return fact[a] * invfact[b] % p * invfact[a - b] % p;}
+
+2.ll C(int a,int b)
+{
+  ll res = 1;
+  int mi = min(b,a-b),mx = max(b,a-b);
+  for(int i = a;i >= mx;-- i)res = res * i % p;
+  //O(mx)如果下面没有预处理逆元可以让上面多算一点
+  for(int i = 1;i <= mi;++ i)res = res * inv(i) % p;
+  //这里也最好是预处理特别是要重复调用时
+}

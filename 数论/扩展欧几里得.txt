@@ -1,0 +1,27 @@
+1.辗转相除法
+ll gcd(ll a,ll b)
+{
+  if(!b)return a;
+  return gcd(b,a % b);
+}
+2.
+ll exgcd(ll a,ll b,ll &x,ll &y)
+{
+  if(!b)
+  {
+    x = 1,y = 0;
+    return a;
+  }
+  int d = exgcd(b,a % b,y,x);
+  y -= (a / b) * x;
+  return d;
+}
+//保证a,b为正，为负变形一下就行，所求的便是-x
+//传回的x，y为一组特解
+3.二元一次不定方程的解的规律
+x = x0 + b / a * k;
+y = y0 + a / b * k;
+//x0,y0通过exgcd求出一组特解
+//求最小非负解，x = (x0 % (b / a)+ b / a) % (b / a);
+//ax + by = c 可变形为a1 * x + b1 * y = gcd(a,b) 的形式
+

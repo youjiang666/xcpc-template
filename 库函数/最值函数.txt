@@ -1,0 +1,9 @@
+1.//<algorithm>
+min(a,b),max(a,b);
+2.
+min_element(v.begin(),v.end());
+max_element(v.begin(),v.end());
+返回的是容器中最值的地址,O(n);
+3.
+nth_element(v.begin(),v.begin()+k,v.end());
+排序使k位置为正确的，且前面的都比他小，后面的都大，O(n);

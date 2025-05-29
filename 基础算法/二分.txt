@@ -1,0 +1,46 @@
+二分前提--单调性
+缩小到一个边界要那边依题意选择
+1.整数二分
+ll Binary_Search(ll l,ll r,ll key)
+{
+  l = l-1,r = r+1;
+  while(l + 1 != r)
+  {
+    ll mid = l + r >> 1;
+    if(a[mid] >= key)r = mid;
+    else l = mid;
+  }
+  if(key != a[r])return -1;
+  return r;  
+}
+
+2.浮点二分
+ll Binary_Search(double l,double r,double key)
+{
+  l = l-1,r = r+1,eps = 1e-6;
+  while(r - l >= eps)
+  {
+    double mid = l + r >> 1;
+    if(f(mid) >= key)r = mid;
+    else l = mid;
+  }
+  return r;//返回l和r差别不大  
+}
+3.二分答案
+ll check(ll x)
+{
+  return x;
+}
+
+ll Binary_Search(ll l,ll r,ll key)
+{
+  l = l-1,r = r+1;
+  while(l + 1 != r)
+  {
+    ll mid = l + r >> 1;
+    if(check(mid) >= key)r = mid;
+    else l = mid;
+  }
+  if(key != check(r))return -1;
+  return r;  
+}

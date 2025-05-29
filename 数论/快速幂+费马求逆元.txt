@@ -1,0 +1,16 @@
+1.快速幂
+ll qmi(ll a,ll b,ll p)
+{
+  ll res = 1;
+  while(b)
+  {
+    if(b & 1)res = res * a % p;
+    a = a * a % p;b >>= 1;
+  }
+  return res;
+}
+2.费马小定理求逆元
+引入
+在mod(p)下a的p-1次方恒等于1
+两次同除a，由于对除法取模不具有封闭性所有此时a的逆元便等价于a的p-2次方
+也就是qmi(x,p - 2,p);

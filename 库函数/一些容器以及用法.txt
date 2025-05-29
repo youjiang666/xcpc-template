@@ -1,0 +1,180 @@
+1.
+pair<T,T>v;//<utility>
+v.first,v.second;
+//使用sort对其排序时first优先second其次升序排序
+2.
+vector<T>v;//<vector>
+常用函数:
+v.push_back();
+v.pop_back();要保证v非空
+排序去重：
+sort(v.begin(),v.end());
+v.erase(unique(v.begin(),v.end()),v.end());
+3.
+stack<T>v;//<stack>
+常用函数:
+v.push(x);
+v.pop();
+v.top();
+v.empty();
+v.size();
+4.
+queue<T>v;//<queue>
+常用函数:
+v.push(x);
+v.pop();
+v.front();
+v.back();
+v.empty();
+v.size();
+priority_queue<T>v;//<queue>
+常用函数:
+v.push(x);
+v.pop();
+v.top();
+v.empty();
+v.size();
+5.
+deque<T>v;//<deque>
+常用函数:
+v.push_back(x);
+v.push_front(x);
+v.pop_back();
+v.pop_front();
+v.front();
+v.back();
+v.empty();
+v.size();
+v.clear();
+v.insert(pos,x);
+v.erase(pos);
+erase(first,last);
+6.
+map<T,T>v;//<map>
+v.insert(k,v);
+v.erase(k);
+v.find(k);
+v.conunt(k);
+v.size(k);
+v.lower_bound(x);//返回第一个大于等于x的键的位置
+v.upper_bound(x);//返回第一个大于x的键的位置
+7.
+set//默认升序
+greater int //降序,非正常成员时需要自定义比较函数
+multiset<T>v;//多重集合可以有重复元素同样是有序的
+v.insert(x);
+v.count(x);
+v.find(x);//找到x的迭代器，没找到便返回v.end();
+
+v.erase(x)：
+1.传入迭代器删除某个值v.erase(v.find(x))；
+2.传入某个值删除所有相同的值v.erase(x);
+3.传入一个范围把这个范围的值删除v.erase(v.lower_bound(2),v.upper_bound(3));
+//删除[2,3]的所有值
+
+v.size();
+v.empty();
+v.begin();
+v.end();//末尾元素的下一个
+v.rbegin();//逆向迭代器的第一个也就是末尾元素
+v.rend();
+v.swap(a,b);
+v.lower_bound(x);//返回第一个大于等于x的元素的迭代器
+v.upper_bound(x);//返回第一个大于x的元素的迭代器
+
+1.去重与有序存储
+需要快速去重并保持元素有序时：
+vector<int> vec = {5, 2, 2, 3, 3, 1};
+set<int>uniqueSorted(vec.begin(), vec.end()); // 自动去重并排序
+// 结果：{1, 2, 3, 5}
+
+2. 快速查找
+利用 O(log n) 的查找效率检查元素是否存在：
+if (mySet.count(42) > 0) // count返回0或1
+
+3. 集合运算
+求交集、并集、差集等：
+#include <iostream>
+#include <set>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+// 通用打印函数
+template <typename Container>
+void print(const string& title, const Container& c) {
+    cout << title << ": ";
+    for (auto& x : c) 
+        cout << x << " ";
+    cout << "\n";
+}
+
+int main() {
+    set<int> a = {1, 2, 3, 4};
+    set<int> b = {3, 4, 5, 6};
+    set<int> res;            // 用来存放中间结果
+
+    // 交集
+    set_intersection(
+        a.begin(), a.end(),
+        b.begin(), b.end(),
+        inserter(res, res.begin())
+    );
+    print("Intersection", res);
+    res.clear();
+
+    // 并集
+    set_union(
+        a.begin(), a.end(),
+        b.begin(), b.end(),
+        inserter(res, res.begin())
+    );
+    print("Union", res);
+    res.clear();
+
+    // 差集 a - b
+    set_difference(
+        a.begin(), a.end(),
+        b.begin(), b.end(),
+        inserter(res, res.begin())
+    );
+    print("Difference (a - b)", res);
+    res.clear();
+
+    // 对称差集
+    set_symmetric_difference(
+        a.begin(), a.end(),
+        b.begin(), b.end(),
+        inserter(res, res.begin())
+    );
+    print("Symmetric Difference", res);
+
+    return 0;
+}
+
+
+4. 维护动态有序数据
+如排行榜、实时数据监控等需要频繁插入且保持顺序的场景。
+
+8.
+unordered_set<T>;
+无序集合复杂度更优秀
+
+9.双向链表
+list<T>v;//<list>
+v.push_back();
+v.push_front();
+v.pop_back();
+v.pop_front();
+v.size();
+v.empty();
+v.front();
+v.back();
+v.reverse(v.begin(),v.end());
+
+
+
+
+
+
+

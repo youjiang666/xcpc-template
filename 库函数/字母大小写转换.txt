@@ -1,0 +1,6 @@
+1.//<cctype>
+islower(char ch);
+isupper(char ch);
+2.
+tolower(char ch);
+toupper(char ch);

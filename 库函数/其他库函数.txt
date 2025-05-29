@@ -1,0 +1,6 @@
+memset(v,0,sizeof(v));//<cstring>
+swap(T &a,T &b);//<algorithm>
+reverse(v.begin(),v.end());//<algorithm>
+unique(v.begin(),v.end());//<algorithm>
+先排序再去重，返回的是有序段的末尾+1，左闭右开区间
+erase(unique(v.begin(),v.end()),v.end())
