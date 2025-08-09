@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define fr(i,n) for(int i = 1;i <= n;++ i)
 using ll = long long;
 const ll inf = 2e18;
-const int N=1e6+10,P=1e9+7;
+const int N = 1e6 + 10,P = 1e9 + 7;
 
 void solve()
 {
-
+  
 }
 
 int main(){

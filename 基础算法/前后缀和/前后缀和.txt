@@ -1,0 +1,3 @@
+用于一些预处理
+prefix[i] = prefix[i - 1] + a[i];
+suffix[i] = suffix[i + 1] + a[i];

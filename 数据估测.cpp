@@ -12,10 +12,9 @@ int lo(ll x)
 
 void solve()
 {
-  int n = 1e6;
-  //cout << lo(n);
-  //cout << bitset<32>(n);
-  cout << (1 << 20);
+  int n = 2e5;
+
+  cout << bitset<32>(n);
 }
 
 int main(){

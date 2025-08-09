@@ -16,5 +16,5 @@ if(n > 1)phi = phi / n * (n - 1);
 //这个也可以用于降幂当p为质数时b = b % (p - 1)
 降幂
 当a的指数b为大数时考虑使用欧拉降幂
-当a与c互质时，a的b次方=a的b(mod(f(c)))次方(mod(f(c)));
-一般的a与c不互质时，a的b次方=a的b(mod(f(c)))+f(c)次方(mod(f(c)));
+当a与c互质时，a的b次方=a的b(mod(f(c)))次方(mod(c));
+一般的a与c不互质时，a的b次方=a的b(mod(f(c)))+f(c)次方(mod(c));
