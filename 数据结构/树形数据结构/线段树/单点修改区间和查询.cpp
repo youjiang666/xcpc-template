@@ -24,11 +24,13 @@ struct node{
 
 ll a[N];
 
-void pushup(int p){
+void pushup(int p)
+{
   tr[p].sum = tr[lc].sum + tr[rc].sum;
 }
 
-void build(int p,int l,int r){
+void build(int p,int l,int r)
+{
   tr[p] = {l,r,a[l]};
   if(l == r)return;
   int mid = l + r >> 1;
@@ -37,8 +39,10 @@ void build(int p,int l,int r){
   pushup(p);
 }
 
-void update(int p,int x,ll k){
-  if(tr[p].l == tr[p].r){
+void update(int p,int x,ll k)
+{
+  if(tr[p].l == tr[p].r)
+  {
     tr[p].sum += k;
     return;
   }
@@ -59,13 +63,16 @@ ll query(int p,int l,int r){
   return sum;
 }
 
-void solve(){
+void solve()
+{
   int n,m;cin >> n >> m;
   fr(i,n)cin >> a[i];
   build(1,1,n);
-  while(m --){
+  while(m --)
+  {
     int _;cin >> _;
-    if(_ == 1){
+    if(_ == 1)
+    {
       int x;ll k;cin >> x >> k;
       update(1,x,k);
     }else {

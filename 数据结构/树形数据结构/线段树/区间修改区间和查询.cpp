@@ -18,18 +18,21 @@ using ll = long long;
 const ll inf = 2e18;
 const int N = 1e6 + 10,P = 1e9 + 7;
 
-struct node{
+struct nod{
   ll l,r,sum,add;
 }tr[N << 2];//最坏为4 * n
 
 ll a[N];
 
-void pushup(int p){
+void pushup(int p)
+{
   tr[p].sum = tr[lc].sum + tr[rc].sum;
 }
 
-void pushdown(int p){
-  if(tr[p].add){
+void pushdown(int p)
+{
+  if(tr[p].add)
+  {
     tr[lc].sum += (tr[lc].r - tr[lc].l + 1) * tr[p].add;
     tr[rc].sum += (tr[rc].r - tr[rc].l + 1) * tr[p].add;
     tr[lc].add += tr[p].add;//注意这里是将子节点的懒标记加上父亲的而不是直接赋值
@@ -38,7 +41,8 @@ void pushdown(int p){
   }
 }
 
-void build(int p,int l,int r){
+void build(int p,int l,int r)
+{
   tr[p] = {l,r,a[l],0};
   if(l == r)return;
   int mid = l + r >> 1;
@@ -47,8 +51,10 @@ void build(int p,int l,int r){
   pushup(p);
 }
 
-void update(int p,int l,int r,ll k){
-  if(l <= tr[p].l && tr[p].r <= r){
+void update(int p,int l,int r,ll k)
+{
+  if(l <= tr[p].l && tr[p].r <= r)
+  {
     tr[p].sum += (tr[p].r - tr[p].l + 1) * k;
     tr[p].add += k;
     return;
@@ -60,7 +66,8 @@ void update(int p,int l,int r,ll k){
   pushup(p);
 }
 
-ll query(int p,int l,int r){
+ll query(int p,int l,int r)
+{
   if(l <= tr[p].l && tr[p].r <= r)
     return tr[p].sum; 
   pushdown(p);
@@ -71,13 +78,16 @@ ll query(int p,int l,int r){
   return sum;
 }
 
-void solve(){
+void solve()
+{
   int n,m;cin >> n >> m;
   fr(i,n)cin >> a[i];
   build(1,1,n);
-  while(m --){
+  while(m --)
+  {
     int _,x,y;cin >> _ >> x >> y;
-    if(_ == 1){
+    if(_ == 1)
+    {
       ll k;cin >> k;
       update(1,x,y,k);
     }else cout << query(1,x,y) << "\n";
